@@ -1,0 +1,19 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bolder;
+}
+
+.todo-item .checkbox{
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.todo-item .text{
+  max-width: 600px;
+  padding-left: 1em;
+  padding-right: 1em;
+}
