@@ -1,4 +1,8 @@
 <div class="title-bar">
   <h1>Todos List App</h1>
 </div>
-<app-todos-list></app-todos-list>
+<app-todos-list
+  *ngFor="let list of this.items"
+  [todosList]="list"
+></app-todos-list>
+<!--<pre><p>{{ items | json}}</pre> -->

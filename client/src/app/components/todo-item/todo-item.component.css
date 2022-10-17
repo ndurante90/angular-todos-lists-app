@@ -12,6 +12,17 @@
   cursor: pointer;
 }
 
+.todo-item .checkbox.checked::after{
+   content: "\2713";  /* Unicode Character “✓” (U+2713)*/
+   display: block;
+   width: 20px;
+   height: 20px;
+   color: green;
+   margin-left: 2px;
+   font-size: 20px;
+   transform: translateY(-4px);
+}
+
 .todo-item .text{
   max-width: 600px;
   padding-left: 1em;

@@ -1,5 +1,7 @@
 <div class="todos-list">
-  <div class="todo-item-wrapper" *ngFor="let values of this.model.items">
-    <app-todo-item></app-todo-item>
+  <h2>{{ this.todosList?.name }}</h2>
+  <span *ngIf="isCompleted">Lista completa</span>
+  <div class="todo-item-wrapper" *ngFor="let value of this.todosList?.items">
+    <app-todo-item [todoItem]="value"></app-todo-item>
   </div>
 </div>

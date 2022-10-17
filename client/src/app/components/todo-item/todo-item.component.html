@@ -1,11 +1,11 @@
-<div class="todo-item">
-  <div class="checkbox"></div>
+<div class="todo-item" (click)="toggleStatus($event)">
+  <div
+    class="checkbox"
+    ngClass="{{ todoItem?.status ? 'checked' : 'unchecked' }}"
+  ></div>
   <div class="text">
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt fugit quis
-      modi mollitia voluptas eveniet fuga delectus rerum ipsum cupiditate
-      consectetur et ullam deleniti, repellat blanditiis beatae perspiciatis vel
-      unde?
+      {{ todoItem?.description }}
     </p>
   </div>
 </div>

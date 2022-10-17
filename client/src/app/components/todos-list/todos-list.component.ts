@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TodoItem } from 'src/app/model/todo-item';
+import { StatusType } from 'src/app/model/todo-status';
 import { TodosList } from 'src/app/model/todos-list';
 
 @Component({
@@ -9,17 +10,19 @@ import { TodosList } from 'src/app/model/todos-list';
 })
 export class TodosListComponent implements OnInit {
 
-  model: TodosList = new TodosList();
+  @Input() todosList: TodosList | undefined;
 
-  todosNumber: any[] = [2,3];
+  isCompleted: boolean | undefined = false;
 
   constructor() {
-    this.model.items = new Array<TodoItem>();
-    this.model.items.push(new TodoItem());
-    this.model.items.push(new TodoItem());
   }
 
   ngOnInit(): void {
+    this.isCompleted = this.isListCompleted();
+  }
+
+  isListCompleted(): boolean | undefined{
+    return this.todosList?.items.every(item => item.status === StatusType.Completed);
   }
 
 }

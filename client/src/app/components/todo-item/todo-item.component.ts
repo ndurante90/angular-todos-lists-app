@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { TodoItem } from 'src/app/model/todo-item';
+import { StatusType } from 'src/app/model/todo-status';
 
 @Component({
   selector: 'app-todo-item',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoItemComponent implements OnInit {
 
+  @Input() todoItem: TodoItem | undefined;
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.todoItem);
+  }
+
+  toggleStatus(event: MouseEvent): void {
+    if(this.todoItem){
+      this.todoItem.status = this.todoItem?.status == StatusType.NotCompleted ? StatusType.Completed : StatusType.NotCompleted;
+    }
   }
 
 }
