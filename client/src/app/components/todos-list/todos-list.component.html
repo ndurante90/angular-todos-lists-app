@@ -1,7 +1,8 @@
-<div class="todos-list">
-  <h2>{{ this.todosList?.name }}</h2>
-  <span *ngIf="isCompleted">Lista completa</span>
-  <div class="todo-item-wrapper" *ngFor="let value of this.todosList?.items">
+<div class="todos-list" *ngFor="let list of todosLists">
+  <h2>{{ list?.name }}</h2>
+  <span *ngIf="isCompleted(list)">Lista completa</span>
+  <button (click)="deleteList(list)">Delete list</button>
+  <div class="todo-item-wrapper" *ngFor="let value of list?.items">
     <app-todo-item [todoItem]="value"></app-todo-item>
   </div>
 </div>

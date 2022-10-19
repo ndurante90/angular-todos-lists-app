@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoItem } from 'src/app/model/todo-item';
 import { TodosList } from 'src/app/model/todos-list';
 import { TodoService } from 'src/app/services/todo-service';
 
@@ -14,7 +15,11 @@ export class TodosListContainerComponent implements OnInit {
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
-    this.items = this.todoService.getTodosList();
+    this.todoService.lists$.subscribe((res) => {this.items = res; console.log(this.items); console.log("HAS CHANGED!")});
+  }
+
+  onFormSubmit(event: any){
+    this.todoService.addItem(event);
   }
 
 }

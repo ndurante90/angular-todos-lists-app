@@ -1,0 +1,7 @@
+.todos-app-wrapper{
+  display: flex;
+}
+
+.todos-app-wrapper > *{
+  flex: 1;
+}

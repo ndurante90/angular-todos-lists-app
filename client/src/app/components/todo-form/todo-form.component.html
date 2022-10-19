@@ -1,0 +1,24 @@
+<div class="todo-form-wrapper">
+  <span>{{ formTitle }}</span>
+  <form (ngSubmit)="this.submitData($event)" [formGroup]="formGroup">
+    <br />
+    <input
+      type="text"
+      id="nameField"
+      name="name"
+      placeholder="Insert the name"
+      formControlName="name"
+      required
+    />
+    <br /><br />
+    <label name="isCompletedLabel" for="statusTypeField">Is completed? :</label>
+    <input
+      type="checkbox"
+      id="statusTypeField"
+      name="statusType"
+      formControlName="statusType"
+    />
+    <br /><br />
+    <input type="submit" value="Aggiungi" [disabled]="!formGroup.valid" />
+  </form>
+</div>

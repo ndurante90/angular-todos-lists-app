@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TodoItem } from 'src/app/model/todo-item';
 import { StatusType } from 'src/app/model/todo-status';
 import { TodosList } from 'src/app/model/todos-list';
+import { TodoService } from 'src/app/services/todo-service';
 
 @Component({
   selector: 'app-todos-list',
@@ -10,19 +11,19 @@ import { TodosList } from 'src/app/model/todos-list';
 })
 export class TodosListComponent implements OnInit {
 
-  @Input() todosList: TodosList | undefined;
+  @Input() todosLists: TodosList[] | undefined;
 
-  isCompleted: boolean | undefined = false;
-
-  constructor() {
+  constructor(private todoService: TodoService) {
   }
 
   ngOnInit(): void {
-    this.isCompleted = this.isListCompleted();
   }
 
-  isListCompleted(): boolean | undefined{
-    return this.todosList?.items.every(item => item.status === StatusType.Completed);
+  isCompleted(list: TodosList){
+    return list.status == StatusType.Completed;
   }
 
+  deleteList(list: TodosList){
+    this.todoService.delete(list);
+  }
 }
